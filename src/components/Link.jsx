@@ -12,6 +12,17 @@ export default function Link({ link, refresh }) {
     refresh()
   }
 
+  async function restore() {
+    await axios.put("/api/updateLink", {
+      id: link._id,
+      name: link.name,
+      url: link.url,
+      description: link.description,
+      archived: false,
+    })
+    refresh()
+  }
+
   async function destroy() {
     await axios.delete("/api/deleteLink", {
       data: { id: link._id },
@@ -31,8 +42,13 @@ export default function Link({ link, refresh }) {
         </div>
 
         <div className="card-footer">
-          <button className="btn btn-warning mx-2" onClick={archive}>
-            Archive
+          <button
+            className={
+              link.archived ? "btn btn-success mx-2" : "btn btn-warning mx-2"
+            }
+            onClick={link.archived ? restore : archive}
+          >
+            {link.archived ? "Restore" : "Archive"}
           </button>
 
           <button className="btn btn-danger mx-2" onClick={destroy}>
