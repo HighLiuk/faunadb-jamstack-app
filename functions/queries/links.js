@@ -30,4 +30,29 @@ module.exports = {
       }
     }
   `,
+  UPDATE_LINK: `
+    mutation (
+      $id: ID!
+      $name: String!
+      $url: String!
+      $description: String!
+      $archived: Boolean!
+    ) {
+      updateLink(
+        id: $id
+        data: {
+          name: $name
+          url: $url
+          description: $description
+          archived: $archived
+        }
+      ) {
+        _id
+        name
+        url
+        description
+        archived
+      }
+    }
+  `,
 }
