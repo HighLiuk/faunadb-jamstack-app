@@ -1,35 +1,9 @@
-const { default: axios } = require("axios")
-require("dotenv").config()
+const { GET_LINKS } = require("./queries/links")
+const response = require("./utils/response")
+const query = require("./utils/query")
 
-const GET_LINKS = `
-  query {
-    allLinks {
-      data {
-        _id
-        name
-        url
-        description
-        archived
-      }
-    }
-  }
-`
-
-exports.handler = async (event) => {
-  const { data } = await axios({
-    baseURL: "https://graphql.eu.fauna.com/graphql",
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${process.env.FAUNA_SECRET_KEY}`,
-    },
-    data: {
-      query: GET_LINKS,
-      variables: {},
-    },
-  })
-
-  return {
-    statusCode: 200,
-    body: JSON.stringify(data),
-  }
+exports.handler = (event) => {
+  return query(GET_LINKS)
+    .then((res) => response(res.allLinks.data, 200))
+    .catch((err) => response({ error: err.message }, 500))
 }
