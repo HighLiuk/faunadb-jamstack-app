@@ -1,4 +1,21 @@
+import axios from "axios"
+
 export default function Link({ link }) {
+  async function archive() {
+    await axios.put("/api/updateLink", {
+      data: {
+        ...link,
+        archived: true,
+      },
+    })
+  }
+
+  async function destroy() {
+    await axios.delete("/api/deleteLink", {
+      data: { id: link._id },
+    })
+  }
+
   return (
     <>
       <div className="card my-4">
@@ -11,9 +28,13 @@ export default function Link({ link }) {
         </div>
 
         <div className="card-footer">
-          <button className="btn btn-warning mx-2">Archive</button>
+          <button className="btn btn-warning mx-2" onClick={archive}>
+            Archive
+          </button>
 
-          <button className="btn btn-danger mx-2">Delete</button>
+          <button className="btn btn-danger mx-2" onClick={destroy}>
+            Delete
+          </button>
         </div>
       </div>
     </>
