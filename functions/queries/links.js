@@ -1,5 +1,5 @@
 module.exports = {
-  GET_LINKS: `
+  ALL_LINKS: `
     query {
       allLinks {
         data {
