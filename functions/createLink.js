@@ -4,7 +4,6 @@ const query = require("./utils/query")
 
 exports.handler = async (event) => {
   if (event.httpMethod !== "POST") {
-    console.log("provo")
     return response({ error: "Method not allowed" }, 405)
   }
 
