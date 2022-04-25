@@ -1,6 +1,7 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
 import Link from "./components/Link"
+import LinkForm from "./components/LinkForm"
 
 export default function App() {
   const [links, setLinks] = useState([])
@@ -18,6 +19,8 @@ export default function App() {
     <>
       <div className="container py-5">
         <h1 className="text-center mb-5">List O' Link</h1>
+
+        <LinkForm refresh={loadLinks} />
 
         <div>
           <h2 className="my-4">Links</h2>
