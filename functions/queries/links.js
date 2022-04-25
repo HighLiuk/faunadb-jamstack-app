@@ -1,7 +1,7 @@
 module.exports = {
   ALL_LINKS: `
     query {
-      allLinks {
+      data: allLinks {
         data {
           _id
           name
@@ -14,7 +14,7 @@ module.exports = {
   `,
   CREATE_LINK: `
     mutation ($name: String!, $url: String!, $description: String!) {
-      createLink(
+      data: createLink(
         data: {
           name: $name
           url: $url
@@ -38,7 +38,7 @@ module.exports = {
       $description: String!
       $archived: Boolean!
     ) {
-      updateLink(
+      data: updateLink(
         id: $id
         data: {
           name: $name
@@ -57,7 +57,7 @@ module.exports = {
   `,
   DELETE_LINK: `
     mutation ($id: ID!) {
-      deleteLink(id: $id) {
+      data: deleteLink(id: $id) {
         _id
         name
         url
