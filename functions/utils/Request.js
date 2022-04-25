@@ -11,7 +11,7 @@ function response(data, statusCode) {
 module.exports = class Request {
   constructor(event) {
     this.method = event.httpMethod
-    this.variables = JSON.parse(event.body ?? "{}")
+    this.variables = JSON.parse(event.body || "{}")
     this.response = null
   }
 
