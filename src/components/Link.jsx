@@ -1,6 +1,6 @@
 import axios from "axios"
 
-export default function Link({ link }) {
+export default function Link({ link, refresh }) {
   async function archive() {
     await axios.put("/api/updateLink", {
       data: {
@@ -8,12 +8,14 @@ export default function Link({ link }) {
         archived: true,
       },
     })
+    refresh()
   }
 
   async function destroy() {
     await axios.delete("/api/deleteLink", {
       data: { id: link._id },
     })
+    refresh()
   }
 
   return (

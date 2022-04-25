@@ -22,7 +22,10 @@ export default function App() {
         <div>
           <h2 className="my-4">Links</h2>
 
-          {links && links.map((link) => <Link key={link._id} link={link} />)}
+          {links &&
+            links.map((link) => (
+              <Link key={link._id} link={link} refresh={loadLinks} />
+            ))}
         </div>
       </div>
     </>
