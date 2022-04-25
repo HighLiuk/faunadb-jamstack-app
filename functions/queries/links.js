@@ -55,4 +55,15 @@ module.exports = {
       }
     }
   `,
+  DELETE_LINK: `
+    mutation ($id: ID!) {
+      deleteLink(id: $id) {
+        _id
+        name
+        url
+        description
+        archived
+      }
+    }
+  `,
 }
