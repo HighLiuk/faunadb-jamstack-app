@@ -3,10 +3,11 @@ import axios from "axios"
 export default function Link({ link, refresh }) {
   async function archive() {
     await axios.put("/api/updateLink", {
-      data: {
-        ...link,
-        archived: true,
-      },
+      id: link._id,
+      name: link.name,
+      url: link.url,
+      description: link.description,
+      archived: true,
     })
     refresh()
   }
