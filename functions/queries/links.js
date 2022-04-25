@@ -3,7 +3,7 @@ module.exports = {
     query {
       data: allLinks {
         data {
-          _id
+          id: _id
           name
           url
           description
@@ -22,7 +22,7 @@ module.exports = {
           archived: false
         }
       ) {
-        _id
+        id: _id
         name
         url
         description
@@ -47,7 +47,7 @@ module.exports = {
           archived: $archived
         }
       ) {
-        _id
+        id: _id
         name
         url
         description
@@ -58,7 +58,7 @@ module.exports = {
   DELETE_LINK: `
     mutation ($id: ID!) {
       data: deleteLink(id: $id) {
-        _id
+        id: _id
         name
         url
         description

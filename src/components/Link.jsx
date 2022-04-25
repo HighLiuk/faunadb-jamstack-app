@@ -3,10 +3,7 @@ import axios from "axios"
 export default function Link({ link, refresh }) {
   async function archive() {
     await axios.put("/api/updateLink", {
-      id: link._id,
-      name: link.name,
-      url: link.url,
-      description: link.description,
+      ...link,
       archived: true,
     })
     refresh()
@@ -14,10 +11,7 @@ export default function Link({ link, refresh }) {
 
   async function restore() {
     await axios.put("/api/updateLink", {
-      id: link._id,
-      name: link.name,
-      url: link.url,
-      description: link.description,
+      ...link,
       archived: false,
     })
     refresh()
@@ -25,7 +19,7 @@ export default function Link({ link, refresh }) {
 
   async function destroy() {
     await axios.delete("/api/deleteLink", {
-      data: { id: link._id },
+      data: { id: link.id },
     })
     refresh()
   }

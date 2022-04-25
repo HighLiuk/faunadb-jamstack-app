@@ -29,7 +29,7 @@ export default function App() {
             links
               .filter(({ archived }) => !archived)
               .map((link) => (
-                <Link key={link._id} link={link} refresh={loadLinks} />
+                <Link key={link.id} link={link} refresh={loadLinks} />
               ))}
         </div>
 
@@ -40,7 +40,7 @@ export default function App() {
             links
               .filter(({ archived }) => archived)
               .map((link) => (
-                <Link key={link._id} link={link} refresh={loadLinks} />
+                <Link key={link.id} link={link} refresh={loadLinks} />
               ))}
         </div>
       </div>
