@@ -23,9 +23,22 @@ export default function App() {
           <h2 className="my-4">Links</h2>
 
           {links &&
-            links.map((link) => (
-              <Link key={link._id} link={link} refresh={loadLinks} />
-            ))}
+            links
+              .filter(({ archived }) => !archived)
+              .map((link) => (
+                <Link key={link._id} link={link} refresh={loadLinks} />
+              ))}
+        </div>
+
+        <div>
+          <h2 className="my-4">Archived</h2>
+
+          {links &&
+            links
+              .filter(({ archived }) => archived)
+              .map((link) => (
+                <Link key={link._id} link={link} refresh={loadLinks} />
+              ))}
         </div>
       </div>
     </>
